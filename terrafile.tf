@@ -2,6 +2,11 @@ module "servers" {
   source        = "./servers"
   instance_type = "t2.micro"
   servers       = 3
+
+  providers = {
+    aws.ohio = aws.Ohio
+    aws.sp   = aws.SP
+  }
 }
 
 output "public_dns-ohio-0" {

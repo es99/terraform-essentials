@@ -6,3 +6,13 @@ terraform {
     region = "us-east-2"
   }
 }
+
+provider "aws" {
+  alias  = "Ohio"
+  region = "us-east-2"
+}
+
+provider "aws" {
+  alias  = "SP"
+  region = "sa-east-1"
+}

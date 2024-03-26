@@ -1,15 +1,15 @@
-provider "aws" {
-  alias  = "Ohio"
-  region = "us-east-2"
-}
-
-provider "aws" {
-  alias  = "SP"
-  region = "sa-east-1"
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "~> 5.0"
+      configuration_aliases = [ aws.ohio, aws.sp ]
+    }
+  }
 }
 
 data "aws_ami" "ubuntu-ohio" {
-  provider    = aws.Ohio
+  provider    = aws.ohio
   most_recent = true
 
   filter {
@@ -27,7 +27,7 @@ data "aws_ami" "ubuntu-ohio" {
 }
 
 data "aws_ami" "ubuntu-SP" {
-  provider    = aws.SP
+  provider    = aws.sp
   most_recent = true
 
   filter {
@@ -46,7 +46,7 @@ data "aws_ami" "ubuntu-SP" {
 
 resource "aws_instance" "ec2_ohio" {
   count = var.servers
-  provider      = aws.Ohio
+  provider      = aws.ohio
   ami           = data.aws_ami.ubuntu-ohio.id
   instance_type = var.instance_type
 
@@ -56,7 +56,7 @@ resource "aws_instance" "ec2_ohio" {
 }
 
 resource "aws_instance" "ec2_sp" {
-  provider      = aws.SP
+  provider      = aws.sp
   ami           = data.aws_ami.ubuntu-SP.id
   instance_type = var.instance_type
 
