@@ -7,3 +7,8 @@ variable "instance_type" {
     error_message = "o tipo de instância não é válido, por favor só utilize instancias t2"
   }
 }
+
+variable "servers" {
+  type = number
+  description = "Number of servers"
+}

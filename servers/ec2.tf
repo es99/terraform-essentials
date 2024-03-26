@@ -1,3 +1,13 @@
+provider "aws" {
+  alias  = "Ohio"
+  region = "us-east-2"
+}
+
+provider "aws" {
+  alias  = "SP"
+  region = "sa-east-1"
+}
+
 data "aws_ami" "ubuntu-ohio" {
   provider    = aws.Ohio
   most_recent = true
@@ -35,6 +45,7 @@ data "aws_ami" "ubuntu-SP" {
 }
 
 resource "aws_instance" "ec2_ohio" {
+  count = var.servers
   provider      = aws.Ohio
   ami           = data.aws_ami.ubuntu-ohio.id
   instance_type = var.instance_type
