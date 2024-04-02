@@ -1,3 +1,4 @@
 variaveis_ambiente.sh
 .terraform.lock.hcl
 .terraform/
+*.tfstate

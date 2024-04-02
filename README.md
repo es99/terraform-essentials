@@ -11,3 +11,6 @@ Bem como comandos: terraform (init, fmt, validade, plan, apply, destroy, show, c
 dando pull/push no state ```terraform state pull >> arquivo``` ```terraform state push <arquivo>``` respectivamente.
 Só que o mais importante foi o conceito de __state lock__ onde bloqueamos o state enquanto fazemos alterações para que este mesmo impeça de outras pessoas
 (desenvolvedores) façam mudança no state enquanto está havendo gravação/mudança.
+
+02/04.2024 - state avançado através dos comandos _pull_, _mv_. Importando recursos legados da cloud para serem gerenciados pelo terraform através
+do comando ```terraform import```

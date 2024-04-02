@@ -64,3 +64,18 @@ resource "aws_instance" "ec2_sp" {
     Name = "blogserver02-SP"
   }
 }
+
+resource "aws_instance" "ec2_ohio_legado" {
+  provider      = aws.ohio
+  instance_type = "t2.micro"
+  ami           = "ami-0b8b44ec9a8f90422"
+
+  tags = {
+    Name = "legado-server"
+  }
+}
+
+resource "aws_security_group" "elb_sg" {
+  provider = aws.ohio
+  # (resource arguments)
+}
