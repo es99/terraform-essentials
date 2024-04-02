@@ -1,15 +1,7 @@
 output "public_dns_instance-ohio" {
-  value = aws_instance.ec2_ohio[0].public_dns
+  value = aws_instance.ec2_ohio1[0].public_dns
 }
 
 output "public_ip_address_instance-ohio" {
-  value = aws_instance.ec2_ohio[0].public_ip
-}
-
-output "public_dns_instance-SP" {
-  value = aws_instance.ec2_sp.public_dns
-}
-
-output "public_ip_address_instance-SP" {
-  value = aws_instance.ec2_sp.public_ip
+  value = aws_instance.ec2_ohio1[0].public_ip
 }
